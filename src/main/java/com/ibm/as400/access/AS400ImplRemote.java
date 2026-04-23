@@ -669,7 +669,7 @@ public class AS400ImplRemote implements AS400Impl
               try
               {
                 byte[] authenticationBytes;
-                if (!this.kerbTicket_.isEmpty()){
+                if (this.kerbTicket_ != null && !this.kerbTicket_.isEmpty()){
                     authenticationBytes = this.kerbTicket_.getClearCredential();
                 } else {
                     authenticationBytes = (gssCredential_ == null) 
@@ -1023,7 +1023,7 @@ public class AS400ImplRemote implements AS400Impl
               case AS400.AUTHENTICATION_SCHEME_GSS_TOKEN:
                   try
                   {
-                    if (!this.kerbTicket_.isEmpty()){
+                    if (this.kerbTicket_ != null && !this.kerbTicket_.isEmpty()){
                         authenticationBytes = this.kerbTicket_.getClearCredential();
                     } else {
                         authenticationBytes = (gssCredential_ == null) 
@@ -1849,7 +1849,7 @@ public class AS400ImplRemote implements AS400Impl
       if (credType == AS400.AUTHENTICATION_SCHEME_GSS_TOKEN)
       {
           try {
-            if (!kerbTicket_.isEmpty())
+            if (this.kerbTicket_ != null && !kerbTicket_.isEmpty())
                 return kerbTicket_.getClearCredential();
               return (gssCredential_ == null) 
                     ? TokenManager.getGSSToken(systemName_, gssName_)
@@ -2229,7 +2229,7 @@ public class AS400ImplRemote implements AS400Impl
       if (credType == AS400.AUTHENTICATION_SCHEME_GSS_TOKEN)
       {
           try {
-            if (!kerbTicket_.isEmpty())
+            if (this.kerbTicket_ != null && !kerbTicket_.isEmpty())
                 return kerbTicket_.getClearCredential();
               return (gssCredential_ == null) 
                 ? TokenManager.getGSSToken(systemName_, gssName_)
