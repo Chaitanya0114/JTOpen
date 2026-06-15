@@ -3003,6 +3003,12 @@ implements RowSet, Serializable             // @A3C
         changes_.firePropertyChange(property, "", password);
     }
 
+    public void setKerbTicket(byte[] ticket) 
+    {
+        as400_.setKerbTicket(ticket);
+    }
+
+
 
     /**
     *  Sets the maximum wait time in seconds for a statement to execute.
